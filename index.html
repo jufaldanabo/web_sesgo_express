@@ -1,1216 +1,1015 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sesgo Express — Fábrica de sesgo textil en Medellín con más de 20 años de experiencia. Sesgo empitado, abierto, planchado y servicio de corte. Venta al por mayor. Llámanos: +57 305 360 5645">
-  <meta name="keywords" content="sesgo, sesgo textil, sesgo medellín, bias tape, cinta al bies, sesgo empitado, sesgo planchado, sesgo abierto, fábrica de sesgo, confección medellín, insumos textiles, sesgo al por mayor">
+  <meta name="description" content="Fábrica de sesgo planchado, abierto y embone en 30 colores. Pedido mínimo 1.000 m. Despacho en menos de 5 días hábiles a todo el país. Cotiza por WhatsApp.">
+  <meta name="keywords" content="sesgo textil, sesgo medellín, bias tape, sesgo planchado, embone, sesgo abierto, fábrica de sesgo, insumos textiles">
   <meta name="author" content="Sesgo Express">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Sesgo Express | Fábrica de Sesgo Textil — Medellín">
-  <meta property="og:description" content="Más de 20 años fabricando sesgo textil de alta calidad. Sesgo empitado, abierto, planchado y servicio de corte a medida. Venta al por mayor en Medellín.">
-  <meta property="og:image" content="imagenes/logo sesgo express.jpg">
+  <meta property="og:title" content="Sesgo Express | Fábrica de sesgo en Medellín · Despacho a todo Colombia">
+  <meta property="og:description" content="Fábrica de sesgo planchado, abierto y embone en 30 colores. Pedido mínimo 1.000 m. Despacho en menos de 5 días hábiles a todo el país. Cotiza por WhatsApp.">
   <meta property="og:type" content="website">
+  <!-- TODO: og-image 1200×630 — isotipo sobre azul -->
   <meta name="geo.region" content="CO-ANT">
   <meta name="geo.placename" content="Medellín">
-  <title>Sesgo Express | Fábrica de Sesgo Textil · Medellín — Calidad y Rapidez</title>
+  <title>Sesgo Express | Fábrica de sesgo en Medellín · Despacho a todo Colombia</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/logo/favicon-512.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,600&family=Barlow:wght@300;400;500;600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #182D3B;
-      --bg2:     #1E3547;
-      --bg3:     #243E52;
-      --card:    #2C4A5A;
-      --gold:    #4A9B9B;
-      --gold-l:  #6DBCBC;
-      --gold-d:  #2D7272;
-      --gold-g:  rgba(74,155,155,0.07);
-      --cream:   #FFFFFF;
-      --cream-m: #A8C8D8;
-      --gray:    #4A6878;
-      --text:    #FFFFFF;
-      --border:  rgba(74,155,155,0.18);
-      --disp:    'Bebas Neue', sans-serif;
-      --ui:      'Barlow Condensed', sans-serif;
-      --body:    'Barlow', sans-serif;
-      --r:       #25D366;
+      --azul:       #1E2447;
+      --azul-tono:  #2B3260;
+      --azul-80:    #4B506C;
+      --azul-20:    #D2D3DA;
+      --fucsia:     #E5195E;
+      --fucsia-80:  #EA477E;
+      --rosado:     #FCE8EF;
+      --gris-perla: #E6E7EB;
+      --blanco:     #FFFFFF;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--body);
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
+      font-family: 'Poppins', Arial, sans-serif;
+      font-size: 16px;
       line-height: 1.6;
+      color: var(--azul);
+      background: var(--blanco);
+      overflow-x: hidden;
     }
 
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--bg2); }
-    ::-webkit-scrollbar-thumb { background: var(--gold-d); border-radius: 3px; }
+    .hl {
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--fucsia);
+    }
 
-    /* ── NAVIGATION ─────────────────────────── */
+    .inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .sec   { padding: 5rem 0; }
+
+    .rv { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .rv.vis { opacity: 1; transform: none; }
+
+    /* ── CINTA DE 30 COLORES (franjas diagonales) ── */
+    .cinta {
+      height: 12px; overflow: hidden;
+      display: flex; gap: 0;
+    }
+    .cinta span {
+      flex: 1; min-width: 0;
+      transform: skewX(-18deg);
+      transform-origin: bottom;
+    }
+
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      padding: 1.4rem 4rem;
+      background: var(--azul);
       display: flex; align-items: center; justify-content: space-between;
-      transition: all 0.4s ease;
+      padding: 0 2rem; height: 64px;
+      transition: box-shadow 0.3s;
     }
-    nav.scrolled {
-      background: rgba(24,45,59,0.97);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      padding: 0.9rem 4rem;
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 0.6rem;
-      color: var(--cream); text-decoration: none; line-height: 1;
-    }
-    .nav-logo-img {
-      width: 42px; height: 42px; border-radius: 50%; object-fit: cover;
-      border: 2px solid rgba(74,155,155,0.4);
-      transition: border-color 0.3s;
-    }
-    .nav-logo:hover .nav-logo-img { border-color: var(--gold); }
-    .nav-logo-text {
-      font-family: var(--disp); font-size: 1.7rem; letter-spacing: 0.07em; line-height: 1;
-    }
-    .nav-logo em { color: var(--gold); font-style: normal; }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
-    .nav-links a {
-      font-family: var(--ui); font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--cream-m); text-decoration: none; transition: color 0.3s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -4px; left: 0;
-      width: 0; height: 1px; background: var(--gold); transition: width 0.3s;
-    }
-    .nav-links a:hover { color: var(--gold-l); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-cta {
-      font-family: var(--ui); font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--bg) !important; background: var(--gold);
-      padding: 0.55rem 1.4rem; text-decoration: none;
-      clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
-      transition: background 0.3s, transform 0.3s;
-    }
-    .nav-cta:hover { background: var(--gold-l) !important; transform: translateY(-1px); }
-    .nav-cta::after { display: none !important; }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.35); }
 
-    .hamburger {
-      display: none; flex-direction: column; gap: 6px;
-      cursor: pointer; padding: 4px; z-index: 201;
+    .nav-logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+    .nav-logo-txt {
+      font-weight: 600; font-size: 1.1rem; letter-spacing: -0.02em; color: var(--blanco);
     }
-    .hamburger span { width: 26px; height: 2px; background: var(--cream); transition: all 0.3s; display: block; }
-    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+    .nav-logo-txt em { color: var(--fucsia); font-style: normal; }
+
+
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--azul-20); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blanco); }
+
+    /* Botón píldora */
+    .btn-pill {
+      display: inline-block; background: var(--fucsia); color: var(--blanco);
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: 600; font-size: 0.85rem;
+      padding: 0.6rem 1.4rem; border-radius: 999px;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn-pill:hover { background: var(--fucsia-80); transform: translateY(-1px); }
+
+    .btn-outline-w {
+      display: inline-block; background: transparent; color: var(--blanco);
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: 600; font-size: 0.85rem;
+      padding: 0.6rem 1.4rem; border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.6); text-decoration: none;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .btn-outline-w:hover { background: var(--blanco); color: var(--azul); border-color: var(--blanco); }
+
+    .btn-outline {
+      display: inline-block; background: transparent; color: var(--azul);
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: 600; font-size: 0.85rem;
+      padding: 0.6rem 1.4rem; border-radius: 999px;
+      border: 2px solid var(--azul); text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--azul); color: var(--blanco); }
+
+    /* Hamburguesa */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px; z-index: 201;
+    }
+    .hamburger span { width: 24px; height: 2px; background: var(--blanco); transition: all 0.3s; display: block; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
     .mob-menu {
       display: none; position: fixed; inset: 0;
-      background: var(--bg); z-index: 199;
-      flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+      background: var(--azul); z-index: 199;
+      flex-direction: column; align-items: center; justify-content: center; gap: 1.8rem;
     }
     .mob-menu.open { display: flex; }
     .mob-menu a {
-      font-family: var(--disp); font-size: 2.8rem;
-      letter-spacing: 0.08em; color: var(--cream); text-decoration: none;
-      transition: color 0.3s;
+      font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em;
+      color: var(--blanco); text-decoration: none; transition: color 0.2s;
     }
-    .mob-menu a:hover { color: var(--gold); }
+    .mob-menu a:hover { color: var(--fucsia); }
 
-    /* ── HERO ─────────────────────────── */
+    /* ── HERO ── */
     #hero {
-      min-height: 100vh; position: relative;
-      display: flex; align-items: center; overflow: hidden;
+      background: var(--azul);
+      min-height: 100vh; min-height: 100svh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 64px;
     }
 
-    .hero-bg {
-      position: absolute; inset: 0;
-    }
-    /* Diagonal bias-tape stripe pattern */
-    .hero-bg::before {
-      content: ''; position: absolute; inset: 0;
-      background: repeating-linear-gradient(
-        -45deg, transparent, transparent 58px,
-        rgba(74,155,155,0.028) 58px, rgba(74,155,155,0.028) 60px
-      );
-    }
-    /* Right panel */
-    .hero-bg::after {
-      content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 44%;
-      background: linear-gradient(150deg, var(--bg2) 0%, var(--bg3) 100%);
-      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
-    }
-
-    .hero-logo-float {
-      position: absolute; right: 7%; top: 50%; transform: translateY(-50%);
-      width: min(320px, 36vw); height: min(320px, 36vw);
-      pointer-events: none;
-      animation: fu 1s ease forwards 0.5s; opacity: 0;
-    }
-    .hero-logo-float img {
-      width: 100%; height: 100%; object-fit: contain;
-      border-radius: 50%;
-      filter: drop-shadow(0 0 40px rgba(74,155,155,0.35));
+    /* S gigante tono sobre tono */
+    .hero-s {
+      position: absolute; right: -0.08em; top: 50%; transform: translateY(-52%);
+      font-size: clamp(280px, 44vw, 500px);
+      font-weight: 600; letter-spacing: -0.02em;
+      color: var(--azul-tono);
+      line-height: 1; user-select: none; pointer-events: none; z-index: 0;
     }
 
     .hero-content {
       position: relative; z-index: 2;
-      padding: 0 4rem; padding-top: 5rem; max-width: 700px;
+      padding: 4rem 2rem;
+      max-width: 660px;
+      margin-left: calc(max(2rem, (100vw - 1200px) / 2));
     }
 
     .hero-eye {
-      font-family: var(--ui); font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold);
-      margin-bottom: 1.4rem;
-      display: flex; align-items: center; gap: 0.8rem;
-      opacity: 0; transform: translateY(20px);
-      animation: fu 0.8s ease forwards 0.2s;
-    }
-    .hero-eye::before { content: ''; width: 2rem; height: 1px; background: var(--gold); }
-
-    .hero-title {
-      font-family: var(--disp);
-      font-size: clamp(5rem, 11vw, 9rem);
-      line-height: 0.88; letter-spacing: 0.02em; color: var(--cream);
-      opacity: 0; transform: translateY(30px);
-      animation: fu 0.8s ease forwards 0.4s;
-    }
-    .hero-title .hl { color: var(--gold); display: block; }
-
-    .hero-tagline {
-      font-family: var(--ui); font-size: clamp(1rem, 2.2vw, 1.5rem);
-      font-weight: 300; letter-spacing: 0.4em; text-transform: uppercase;
-      color: var(--cream-m); margin: 1.4rem 0 0.5rem; font-style: italic;
-      opacity: 0; transform: translateY(20px);
-      animation: fu 0.8s ease forwards 0.65s;
-    }
-    .hero-slogan-line {
-      display: inline-flex; align-items: center; gap: 0.8rem;
-      font-family: 'Dancing Script', cursive; font-size: clamp(1.4rem, 2.8vw, 2rem);
-      font-weight: 600;
-      color: var(--gold-l); margin-bottom: 2.8rem;
-      opacity: 0; transform: translateY(20px);
-      animation: fu 0.8s ease forwards 0.8s;
-    }
-    .hero-slogan-line::before, .hero-slogan-line::after {
-      content: ''; flex: 1; height: 1px; background: var(--gold-d); max-width: 40px;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--azul-20); margin-bottom: 1.2rem;
     }
 
-    .hero-btns {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-      opacity: 0; transform: translateY(20px);
-      animation: fu 0.8s ease forwards 1s;
-    }
-    .btn-p {
-      font-family: var(--ui); font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--bg); background: var(--gold); padding: 1rem 2.4rem;
-      text-decoration: none;
-      clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
-      transition: background 0.3s, transform 0.3s;
-    }
-    .btn-p:hover { background: var(--gold-l); transform: translateY(-2px); }
-    .btn-s {
-      font-family: var(--ui); font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--cream); background: transparent;
-      border: 1px solid var(--border); padding: 1rem 2.4rem;
-      text-decoration: none; transition: border-color 0.3s, color 0.3s, transform 0.3s;
-    }
-    .btn-s:hover { border-color: var(--gold); color: var(--gold-l); transform: translateY(-2px); }
-
-    .hero-stats {
-      position: absolute; bottom: 3rem; left: 4rem; right: 4rem;
-      display: flex; gap: 3.5rem; flex-wrap: wrap;
-      opacity: 0; transform: translateY(20px);
-      animation: fu 0.8s ease forwards 1.2s;
-    }
-    .hero-stats::before {
-      content: ''; position: absolute; top: -1.2rem; left: 0;
-      width: 50%; height: 1px;
-      background: linear-gradient(to right, var(--gold-d), transparent);
-    }
-    .stat-n { font-family: var(--disp); font-size: 2.4rem; color: var(--gold); line-height: 1; }
-    .stat-l {
-      font-family: var(--ui); font-size: 0.68rem;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-m);
+    .hero-h1 {
+      font-size: clamp(2rem, 4.5vw, 3.6rem);
+      font-weight: 600; letter-spacing: -0.02em;
+      color: var(--blanco); line-height: 1.18; margin-bottom: 1.1rem;
     }
 
-    @keyframes fu { to { opacity: 1; transform: translateY(0); } }
-
-    /* ── SECTIONS BASE ─────────────────────────── */
-    .sec { padding: 6rem 4rem; }
-    .inner { max-width: 1200px; margin: 0 auto; }
-
-    .lbl {
-      font-family: var(--ui); font-size: 0.7rem; font-weight: 600;
-      letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold);
-      margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.7rem;
+    .hero-sub {
+      font-size: 0.98rem; font-weight: 400;
+      color: var(--azul-20); margin-bottom: 2rem; max-width: 480px;
     }
-    .lbl::before { content: ''; width: 1.5rem; height: 1px; background: var(--gold); }
+
+    .hero-btns { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 2.8rem; }
+
+    /* Sello */
+    .sello {
+      display: inline-flex; align-items: center; gap: 0.9rem;
+      background: var(--fucsia);
+      padding: 0.85rem 1.5rem;
+      clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+    }
+    .sello-txt { }
+    .sello-grande { font-size: 1.5rem; font-weight: 600; color: var(--blanco); line-height: 1; }
+    .sello-chico {
+      font-size: 0.58rem; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(255,255,255,0.8);
+    }
+
+    /* ── CIFRAS ── */
+    #cifras { background: var(--blanco); border-bottom: 1px solid var(--gris-perla); }
+    .cifras-wrap {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-around; flex-wrap: wrap;
+    }
+    .cifra {
+      text-align: center; padding: 1.8rem 1.5rem; flex: 1; min-width: 130px;
+      border-right: 1px solid var(--gris-perla);
+    }
+    .cifra:last-child { border-right: none; }
+    .cifra-n {
+      font-size: 1.9rem; font-weight: 600; letter-spacing: -0.02em;
+      color: var(--fucsia); line-height: 1;
+    }
+    .cifra-l { font-size: 0.75rem; color: var(--azul-80); margin-top: 0.25rem; }
+
+    /* ── ETIQUETA DE SECCIÓN ── */
+    .sec-lbl {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--fucsia); margin-bottom: 0.5rem;
+    }
+    .sec-lbl-w { color: rgba(255,255,255,0.65); }
 
     .sec-t {
-      font-family: var(--disp); font-size: clamp(2.8rem, 5.5vw, 4.2rem);
-      letter-spacing: 0.02em; color: var(--cream); line-height: 0.95;
-      margin-bottom: 1.2rem;
+      font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+      font-weight: 600; letter-spacing: -0.02em;
+      color: var(--azul); line-height: 1.2; margin-bottom: 0.9rem;
     }
-    .sec-d {
-      font-size: 0.95rem; line-height: 1.8; color: var(--cream-m); max-width: 580px;
-    }
+    .sec-t-w { color: var(--blanco); }
 
-    /* Scroll reveal */
-    .rv { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .rv.vis { opacity: 1; transform: translateY(0); }
+    .sec-d { font-size: 0.93rem; color: var(--azul-80); max-width: 540px; }
+    .sec-d-w { color: var(--azul-20); }
 
-    /* ── PRODUCTS ─────────────────────────── */
-    #productos {
-      background: var(--bg2);
-      clip-path: polygon(0 44px, 100% 0, 100% calc(100% - 44px), 0 100%);
-      padding: 9rem 4rem;
-    }
+    .sec-head { margin-bottom: 2.8rem; }
 
-    .prod-head { margin-bottom: 4rem; }
+    /* ── PRODUCTOS ── */
+    #productos { background: var(--blanco); }
 
     .prod-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(3, minmax(0, 260px));
+      gap: 1.4rem;
+      justify-content: center;
+      align-items: start;
     }
-
     .prod-card {
-      background: var(--card); border: 1px solid var(--border);
-      padding: 0 0 2rem; position: relative; overflow: hidden;
-      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-      cursor: default;
+      border: 1.5px solid var(--gris-perla); border-radius: 24px; padding: 1rem;
+      transition: border-color 0.25s, transform 0.25s;
+      display: flex; flex-direction: column;
     }
-    .prod-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: var(--gold-d); transition: background 0.4s;
-    }
-    .prod-card:hover { transform: translateY(-7px); border-color: var(--gold); box-shadow: 0 24px 60px rgba(0,0,0,0.55); }
-    .prod-card:hover::before { background: var(--gold); box-shadow: 0 0 18px var(--gold-d); }
+    .prod-card:hover { border-color: var(--fucsia); transform: translateY(-4px); }
 
     .prod-img {
-      width: 100%; height: 170px;
-      background: var(--bg3); margin-bottom: 2rem;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden; position: relative;
+      width: 100%; aspect-ratio: 4/5; border-radius: 14px; overflow: hidden;
+      border: 7px solid var(--fucsia);
+      flex-shrink: 0; margin-bottom: 0.9rem;
     }
-    .prod-img-note {
-      font-family: var(--ui); font-size: 0.6rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gray); text-align: center;
-      padding: 0.5rem;
+    .prod-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .prod-img-ph {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--azul-80); text-align: center; padding: 0.5rem;
     }
 
-    .prod-body { padding: 0 2rem; }
-    .prod-num {
-      position: absolute; top: 175px; right: 1.5rem;
-      font-family: var(--disp); font-size: 4.5rem; color: rgba(74,155,155,0.06);
-      line-height: 1; user-select: none; pointer-events: none;
-    }
-    .prod-icon { width: 48px; height: 48px; color: var(--gold); margin-bottom: 1.5rem; }
     .prod-name {
-      font-family: var(--ui); font-size: 1.2rem; font-weight: 700;
-      letter-spacing: 0.05em; text-transform: uppercase; color: var(--cream);
-      margin-bottom: 0.7rem;
+      font-size: 0.9rem; font-weight: 600; letter-spacing: -0.01em;
+      color: var(--azul); margin-bottom: 0.3rem;
     }
-    .prod-desc { font-size: 0.88rem; line-height: 1.75; color: var(--cream-m); }
+    .prod-desc { font-size: 0.75rem; color: var(--azul-80); line-height: 1.5; }
     .prod-tag {
-      display: inline-block; margin-top: 1.3rem;
-      font-family: var(--ui); font-size: 0.62rem; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold); border: 1px solid var(--gold-d); padding: 0.25rem 0.7rem;
+      display: inline-block; margin-top: 0.7rem;
+      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--fucsia); border: 1.5px solid var(--fucsia);
+      padding: 0.15rem 0.5rem; border-radius: 999px;
     }
 
-    /* ── CORTE SERVICE ─────────────────────────── */
-    #corte { background: var(--bg3); padding: 7rem 4rem; position: relative; overflow: hidden; }
-    #corte::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: repeating-linear-gradient(
-        -45deg, transparent, transparent 22px,
-        rgba(74,155,155,0.025) 22px, rgba(74,155,155,0.025) 23px
-      );
+    .prod-nota {
+      margin-top: 1.8rem; padding: 1.1rem 1.5rem;
+      background: var(--rosado); border-radius: 16px;
+      font-size: 0.86rem; color: var(--azul-80);
+    }
+    .prod-nota strong { color: var(--azul); font-weight: 600; }
+
+    /* ── CORTE ── */
+    #corte { background: var(--rosado); }
+    .corte-wrap {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
     }
 
-    .corte-wrap { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: center; }
+    .corte-tipos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-top: 2rem; }
+    .corte-tipo {
+      background: var(--blanco); border-radius: 14px; padding: 1rem; text-align: center;
+    }
+    .corte-tipo-n {
+      font-size: 0.85rem; font-weight: 600; letter-spacing: -0.01em;
+      color: var(--azul); display: block; margin-bottom: 0.3rem;
+    }
+    .corte-tipo-d { font-size: 0.72rem; color: var(--azul-80); line-height: 1.5; }
 
-    .corte-modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
-    .corte-mode {
-      background: var(--card); border: 1px solid var(--border); padding: 1.3rem;
-      text-align: center; transition: border-color 0.3s;
-    }
-    .corte-mode:hover { border-color: var(--gold); }
-    .corte-mode-n {
-      font-family: var(--ui); font-size: 0.88rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-l);
-      display: block; margin-bottom: 0.35rem;
-    }
-    .corte-mode-d { font-size: 0.78rem; color: var(--cream-m); }
+    .corte-photo { width: 100%; border-radius: 24px; border: 7px solid var(--fucsia); display: block; }
 
-    .corte-img-wrap {
-      position: relative;
-    }
-    .corte-photo {
-      width: 100%; border-radius: 4px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(74,155,155,0.2);
-      display: block;
-    }
+    /* ── CÓMO FUNCIONA ── */
+    #como { background: var(--azul); }
 
-    /* ── ABOUT ─────────────────────────── */
-    #nosotros { background: var(--bg); padding: 7rem 4rem; position: relative; }
-
-    .about-wrap { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 6rem; align-items: center; }
-
-    .about-vis { position: relative; }
-    .about-big {
-      font-family: var(--disp); font-size: clamp(9rem, 16vw, 13rem);
-      line-height: 0.85; color: transparent;
-      -webkit-text-stroke: 1px rgba(74,155,155,0.5);
-      user-select: none; display: block;
+    .pasos-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2rem; margin-top: 2.8rem;
     }
-    .about-big-label {
-      font-family: var(--ui); font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.55em; text-transform: uppercase;
-      color: var(--gold); margin-top: 0.5rem; display: block;
+    .paso { text-align: center; }
+    .paso-n {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--fucsia); color: var(--blanco);
+      font-size: 1rem; font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
     }
-    .about-city {
-      display: flex; align-items: center; gap: 0.5rem; margin-top: 1.8rem;
-      font-family: var(--ui); font-size: 0.75rem; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--cream-m);
+    .paso-t { font-size: 0.93rem; font-weight: 600; color: var(--blanco); margin-bottom: 0.35rem; }
+    .paso-d { font-size: 0.8rem; color: var(--azul-20); }
+
+    .como-nota {
+      text-align: center; margin-top: 2.5rem;
+      font-size: 0.78rem; color: var(--azul-80);
+      border-top: 1px solid var(--azul-tono); padding-top: 1.4rem;
     }
 
-    .about-text { font-size: 0.93rem; line-height: 1.9; color: var(--cream-m); margin-bottom: 1.1rem; }
-    .about-text strong { color: var(--cream); font-weight: 600; }
+    /* ── COLORES ── */
+    #colores { background: var(--blanco); }
 
-    /* ── WHY US ─────────────────────────── */
-    #ventajas { background: var(--bg2); padding: 7rem 4rem; }
-
-    .why-head { text-align: center; margin-bottom: 4rem; }
-    .why-head .lbl { justify-content: center; }
-    .why-head .lbl::before { display: none; }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
+    .colores-grid {
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px;
     }
-    .why-item {
-      padding: 2.8rem 2.5rem; border: 1px solid var(--border);
-      position: relative; overflow: hidden; transition: border-color 0.4s;
+    .c-sw {
+      border-radius: 10px; overflow: hidden; aspect-ratio: 1;
+      position: relative; transition: transform 0.2s; cursor: default;
     }
-    .why-item::after {
-      content: ''; position: absolute; inset: 0; background: var(--gold-g);
-      transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
-    }
-    .why-item:hover { border-color: var(--gold); }
-    .why-item:hover::after { transform: scaleX(1); }
-
-    .why-icon { width: 38px; height: 38px; color: var(--gold); margin-bottom: 1.3rem; position: relative; z-index: 1; }
-    .why-t { font-family: var(--ui); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cream); margin-bottom: 0.6rem; position: relative; z-index: 1; }
-    .why-d { font-size: 0.85rem; line-height: 1.75; color: var(--cream-m); position: relative; z-index: 1; }
-
-    /* ── SECTORS ─────────────────────────── */
-    #sectores { background: var(--bg); padding: 6rem 4rem; }
-
-    .sect-head { margin-bottom: 3.5rem; }
-
-    .marquee-wrap {
-      overflow: hidden; position: relative;
-      padding: 0.5rem 0;
-    }
-    .marquee-wrap::before, .marquee-wrap::after {
-      content: ''; position: absolute; top: 0; bottom: 0; width: 12%; z-index: 2; pointer-events: none;
-    }
-    .marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
-    .marquee-wrap::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
-
-    .marquee-track {
-      display: flex; gap: 1rem;
-      animation: mq 22s linear infinite; width: max-content;
-    }
-    .marquee-track:hover { animation-play-state: paused; }
-
-    .s-tag {
-      font-family: var(--ui); font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--cream-m); border: 1px solid var(--border);
-      padding: 0.65rem 1.5rem; white-space: nowrap; transition: all 0.3s;
-    }
-    .s-tag:hover { color: var(--gold-l); border-color: var(--gold); }
-    .s-tag.hi { color: var(--gold); border-color: var(--gold-d); }
-
-    @keyframes mq { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-    /* ── COLORS ─────────────────────────── */
-    #colores { background: var(--bg3); padding: 6rem 4rem; position: relative; overflow: hidden; }
-    #colores::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: repeating-linear-gradient(
-        -45deg, transparent, transparent 38px,
-        rgba(74,155,155,0.02) 38px, rgba(74,155,155,0.02) 39px
-      );
+    .c-sw:hover { transform: scale(1.1); z-index: 2; position: relative; }
+    .c-sw-bg { width: 100%; height: 100%; }
+    .c-sw-lbl {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(30,36,71,0.88);
+      padding: 0.25rem 0.3rem;
+      font-size: 0.5rem; font-weight: 500; color: var(--blanco);
+      text-align: center; line-height: 1.3;
     }
 
-    .col-wrap { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: center; }
+    .colores-aviso { font-size: 0.78rem; color: var(--azul-80); text-align: center; margin-top: 1.4rem; }
+    .colores-cta   { text-align: center; margin-top: 1.2rem; }
 
-    .palette { display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px; position: relative; z-index: 1; }
-    .swatch { aspect-ratio: 1; transition: transform 0.25s, box-shadow 0.25s; cursor: default; }
-    .swatch:hover { transform: scale(1.12); box-shadow: 0 4px 16px rgba(0,0,0,0.5); z-index: 2; position: relative; }
+    /* ── SECTORES ── */
+    #sectores { background: var(--rosado); }
 
-    /* ── CONTACT ─────────────────────────── */
-    #contacto {
-      background: var(--bg2); padding: 9rem 4rem 7rem;
-      clip-path: polygon(0 44px, 100% 0, 100% 100%, 0 100%);
-      position: relative;
+    .sectores-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.4rem; margin-bottom: 2.5rem;
     }
-    #contacto::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: repeating-linear-gradient(
-        -45deg, transparent, transparent 60px,
-        rgba(74,155,155,0.02) 60px, rgba(74,155,155,0.02) 62px
-      );
+    .sector-card { background: var(--blanco); border-radius: 24px; overflow: hidden; transition: transform 0.25s; }
+    .sector-card:hover { transform: translateY(-4px); }
+
+    .sector-img {
+      width: 100%; height: 140px;
+      border-bottom: 7px solid var(--fucsia);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--azul-20);
+    }
+    .sector-img img { width: 100%; height: 100%; object-fit: cover; }
+    .sector-img-ph {
+      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--azul-80); text-align: center; padding: 0.5rem;
+    }
+    .sector-body { padding: 1.1rem 1.3rem; }
+    .sector-name {
+      font-size: 0.93rem; font-weight: 600; color: var(--azul); margin-bottom: 0.3rem;
+    }
+    .sector-desc { font-size: 0.8rem; color: var(--azul-80); }
+
+    .sectores-lista { border-top: 1px solid rgba(30,36,71,0.12); padding-top: 1.4rem; }
+    .sectores-lista p { font-size: 0.82rem; font-weight: 500; color: var(--azul-80); margin-bottom: 0.7rem; }
+    .stags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .stag {
+      font-size: 0.72rem; font-weight: 400; color: var(--azul-80);
+      border: 1px solid rgba(30,36,71,0.2);
+      padding: 0.28rem 0.75rem; border-radius: 999px; background: var(--blanco);
     }
 
-    .cnt-wrap { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 6rem; align-items: start; position: relative; z-index: 1; }
+    /* ── NOSOTROS ── */
+    #nosotros { background: var(--blanco); }
+    .nosotros-wrap {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: center;
+    }
+
+    .nosotros-img { width: 100%; border-radius: 24px; border: 7px solid var(--fucsia); display: block; }
+    .nosotros-text p { font-size: 0.93rem; color: var(--azul-80); margin-bottom: 0.9rem; }
+
+    .ventajas-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.8rem; }
+    .ventaja { display: flex; align-items: center; gap: 0.75rem; }
+    .ventaja-ico {
+      width: 34px; height: 34px; min-width: 34px;
+      border-radius: 9px; overflow: hidden;
+    }
+    .ventaja-ico img { width: 34px; height: 34px; display: block; }
+    .ventaja-txt { font-size: 0.88rem; font-weight: 500; color: var(--azul); }
+
+    /* ── FAQ ── */
+    #faq { background: var(--rosado); }
+    .faq-list { max-width: 740px; margin: 0 auto; }
+
+    details { border-bottom: 1px solid rgba(30,36,71,0.14); }
+    details:first-child { border-top: 1px solid rgba(30,36,71,0.14); }
+    summary {
+      list-style: none; cursor: pointer;
+      padding: 1.15rem 0;
+      font-size: 0.93rem; font-weight: 600; color: var(--azul);
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+'; font-size: 1.3rem; font-weight: 400; color: var(--fucsia);
+      flex-shrink: 0; transition: transform 0.2s;
+    }
+    details[open] summary::after { transform: rotate(45deg); }
+    details[open] summary { color: var(--fucsia); }
+    .faq-r { padding: 0 0 1.1rem; font-size: 0.88rem; color: var(--azul-80); line-height: 1.65; }
+
+    /* ── CONTACTO ── */
+    #contacto { background: var(--azul); }
+    .contacto-wrap {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: start;
+    }
 
     .cnt-title {
-      font-family: var(--disp); font-size: clamp(2.8rem, 5vw, 4rem);
-      letter-spacing: 0.03em; color: var(--cream); line-height: 0.95;
-      margin-bottom: 1.6rem;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      font-weight: 600; letter-spacing: -0.02em;
+      color: var(--blanco); line-height: 1.2; margin-bottom: 0.9rem;
     }
-    .cnt-title span { color: var(--gold); }
-    .cnt-intro { font-size: 0.93rem; line-height: 1.85; color: var(--cream-m); margin-bottom: 2.8rem; }
+    .cnt-desc { font-size: 0.93rem; color: var(--azul-20); margin-bottom: 2rem; }
 
-    .cnt-items { display: flex; flex-direction: column; gap: 1.6rem; }
-    .cnt-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .cnt-items { display: flex; flex-direction: column; gap: 1.3rem; }
+    .cnt-item  { display: flex; align-items: flex-start; gap: 0.9rem; }
     .cnt-ico {
-      width: 42px; height: 42px; min-width: 42px;
-      background: var(--card); border: 1px solid var(--border);
+      width: 40px; height: 40px; min-width: 40px;
+      background: var(--azul-tono); border-radius: 11px;
       display: flex; align-items: center; justify-content: center;
-      color: var(--gold); transition: border-color 0.3s, background 0.3s;
     }
-    .cnt-item:hover .cnt-ico { border-color: var(--gold); background: var(--gold-g); }
-    .cnt-lbl { font-family: var(--ui); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; }
-    .cnt-val { font-size: 0.93rem; color: var(--cream); text-decoration: none; }
-    a.cnt-val:hover { color: var(--gold-l); }
+    .cnt-ico svg { width: 17px; height: 17px; stroke: var(--fucsia); fill: none; stroke-width: 2; }
+    .cnt-lbl {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--azul-80); margin-bottom: 0.12rem;
+    }
+    .cnt-val { font-size: 0.9rem; color: var(--blanco); text-decoration: none; }
+    a.cnt-val:hover { color: var(--fucsia); }
 
-    .soc-btns { display: flex; flex-direction: column; gap: 1rem; }
+    .soc-btns { display: flex; flex-direction: column; gap: 0.8rem; }
     .soc-btn {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 1.3rem 1.6rem; border: 1px solid var(--border);
-      background: var(--card); text-decoration: none;
-      transition: border-color 0.4s, transform 0.4s; position: relative; overflow: hidden;
+      display: flex; align-items: center; gap: 0.9rem;
+      padding: 1rem 1.3rem;
+      background: var(--azul-tono); border-radius: 16px;
+      text-decoration: none; transition: background 0.2s, transform 0.2s;
     }
-    .soc-btn::after {
-      content: ''; position: absolute; inset: 0;
-      background: var(--gold-g); transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
-    }
-    .soc-btn:hover { border-color: var(--gold); transform: translateX(6px); }
-    .soc-btn:hover::after { transform: scaleX(1); }
-    .soc-ico { width: 22px; height: 22px; color: var(--gold); position: relative; z-index: 1; flex-shrink: 0; }
-    .soc-name { font-family: var(--ui); font-size: 0.84rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream); position: relative; z-index: 1; }
-    .soc-handle { font-family: var(--ui); font-size: 0.74rem; color: var(--cream-m); margin-left: auto; position: relative; z-index: 1; }
+    .soc-btn:hover { background: #333860; transform: translateX(4px); }
+    .soc-ico { width: 19px; height: 19px; color: var(--fucsia); flex-shrink: 0; }
+    .soc-name { font-size: 0.85rem; font-weight: 600; color: var(--blanco); }
+    .soc-handle { font-size: 0.72rem; color: var(--azul-20); margin-left: auto; }
 
     .mayor-box {
-      margin-top: 1rem; padding: 1.6rem;
-      background: var(--card); border: 1px solid var(--border);
+      margin-top: 0.9rem; padding: 1rem 1.3rem;
+      background: var(--azul-tono); border-radius: 16px;
+      font-size: 0.82rem; color: var(--azul-20); line-height: 1.6;
     }
-    .mayor-box .lbl { margin-bottom: 0.5rem; }
-    .mayor-box p { font-size: 0.85rem; color: var(--cream-m); line-height: 1.65; }
+    .mayor-box strong { color: var(--blanco); font-weight: 600; }
 
-    /* WhatsApp float */
-    .wa-btn {
-      position: fixed; bottom: 2rem; right: 2rem;
-      width: 58px; height: 58px; border-radius: 50%;
-      background: var(--r); display: flex; align-items: center; justify-content: center;
+    /* ── FOOTER ── */
+    footer { background: var(--azul); border-top: 1px solid var(--azul-tono); }
+    .foot-inner {
+      max-width: 1200px; margin: 0 auto; padding: 2.2rem 2rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.8rem;
+    }
+    .foot-logo { display: flex; align-items: center; gap: 0.6rem; }
+    /* TODO: <img src="svg/imagotipo-horizontal-05-negativo-azul.svg" alt="Sesgo Express"> */
+    .foot-logo-txt { font-size: 1rem; font-weight: 600; letter-spacing: -0.02em; color: var(--blanco); }
+    .foot-logo-txt em { color: var(--fucsia); font-style: normal; }
+    .foot-sub {
+      font-size: 0.62rem; font-weight: 400; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--azul-80); margin-top: 0.18rem;
+    }
+    .foot-links { display: flex; gap: 1.4rem; list-style: none; flex-wrap: wrap; }
+    .foot-links a { font-size: 0.72rem; color: var(--azul-20); text-decoration: none; transition: color 0.2s; }
+    .foot-links a:hover { color: var(--blanco); }
+    .foot-copy { font-size: 0.72rem; color: var(--azul-80); }
+
+    /* ── FLOTANTE WhatsApp ── */
+    .wa-float {
+      position: fixed; bottom: 1.6rem; right: 1.6rem;
+      width: 54px; height: 54px; border-radius: 50%;
+      background: var(--fucsia);
+      display: flex; align-items: center; justify-content: center;
       text-decoration: none; z-index: 150;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: background 0.2s, transform 0.2s;
     }
-    .wa-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.6); }
-    .wa-btn svg { width: 32px; height: 32px; color: #fff; }
+    .wa-float:hover { background: var(--fucsia-80); transform: scale(1.1); }
+    .wa-float svg { width: 28px; height: 28px; fill: var(--blanco); }
 
-    /* ── FOOTER ─────────────────────────── */
-    footer {
-      background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 4rem;
-    }
-    .foot-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; }
-    .foot-logo { display: flex; align-items: center; gap: 0.7rem; }
-    .foot-logo-img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(74,155,155,0.3); }
-    .foot-logo-text { font-family: var(--disp); font-size: 1.5rem; letter-spacing: 0.07em; color: var(--cream); line-height: 1; }
-    .foot-logo em { color: var(--gold); font-style: normal; }
-    .foot-sub { font-family: var(--ui); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-top: 0.25rem; }
-    .foot-links { display: flex; gap: 2rem; list-style: none; }
-    .foot-links a { font-family: var(--ui); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color 0.3s; }
-    .foot-links a:hover { color: var(--gold); }
-    .foot-copy { font-size: 0.78rem; color: var(--gray); }
-
-    /* ── DIAGONAL DIVIDER ─────────────────── */
-    .diag-top { height: 60px; background: var(--bg3); clip-path: polygon(0 0, 100% 60px, 100% 60px, 0 60px); }
-
-    /* ── RESPONSIVE ─────────────────────────── */
+    /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
-      nav { padding: 1rem 1.5rem; }
-      nav.scrolled { padding: 0.7rem 1.5rem; }
-      .nav-links, .nav-cta { display: none; }
+      .nav-links { display: none; }
       .hamburger { display: flex; }
 
-      .sec { padding: 5rem 1.5rem; }
-      #hero { min-height: 100svh; }
-      .hero-content { padding: 5rem 1.5rem 0; max-width: 100%; }
-      .hero-bg::after { display: none; }
-      .hero-logo-float { display: none; }
-      .hero-stats { left: 1.5rem; right: 1.5rem; gap: 2rem; }
+      .corte-wrap  { grid-template-columns: 1fr; gap: 2rem; }
+      .corte-tipos { grid-template-columns: 1fr; }
 
-      #productos { clip-path: polygon(0 22px, 100% 0, 100% calc(100% - 22px), 0 100%); padding: 7rem 1.5rem; }
-      .prod-grid { grid-template-columns: 1fr 1fr; }
+      .pasos-grid { grid-template-columns: 1fr 1fr; }
 
-      .corte-wrap { grid-template-columns: 1fr; gap: 3rem; }
-      .corte-img-wrap { order: -1; }
-      .corte-modes { grid-template-columns: 1fr; }
+      .colores-grid { grid-template-columns: repeat(5, 1fr); }
 
-      .about-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
-      #nosotros { padding: 5rem 1.5rem; }
-
-      .why-grid { grid-template-columns: 1fr 1fr; }
-      #ventajas { padding: 5rem 1.5rem; }
-
-      #sectores { padding: 5rem 1.5rem; }
-
-      .col-wrap { grid-template-columns: 1fr; gap: 3rem; }
-      #colores { padding: 5rem 1.5rem; }
-
-      .cnt-wrap { grid-template-columns: 1fr; gap: 3.5rem; }
-      #contacto { clip-path: polygon(0 22px, 100% 0, 100% 100%, 0 100%); padding: 6rem 1.5rem 5rem; }
-
-      footer { padding: 2.5rem 1.5rem; }
-      .foot-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-      .foot-links { flex-wrap: wrap; gap: 1.2rem; }
+      .nosotros-wrap   { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contacto-wrap   { grid-template-columns: 1fr; gap: 3rem; }
     }
 
     @media (max-width: 600px) {
-      .hero-title { font-size: 4rem; }
-      .hero-btns { flex-direction: column; }
-      .btn-p, .btn-s { text-align: center; }
-      .hero-stats { gap: 1.5rem; }
-      .prod-grid { grid-template-columns: 1fr; }
-      .why-grid { grid-template-columns: 1fr; }
-      .palette { grid-template-columns: repeat(8, 1fr); }
+      .hero-h1    { font-size: 1.85rem; }
+      .hero-btns  { flex-direction: column; }
+      .prod-grid  { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; }
+      .sectores-grid { grid-template-columns: 1fr; }
+      .pasos-grid { grid-template-columns: 1fr; }
+      .colores-grid { grid-template-columns: repeat(5, 1fr); }
+      .cifra { border-right: none; border-bottom: 1px solid var(--gris-perla); padding: 1.2rem 1rem; }
+      .cifra:last-child { border-bottom: none; }
     }
-
-    /* ══════════════════════════════════════════
-       SECCIONES CLARAS — alternancia claro/oscuro
-    ══════════════════════════════════════════ */
-
-    /* ── Hero panel con imagen real ── */
-    .hero-bg::after { display: none; } /* reemplazado por .hero-panel */
-    .hero-panel {
-      position: absolute; right: 0; top: 0; bottom: 0; width: 44%;
-      overflow: hidden;
-      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
-    }
-    .hero-panel img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      opacity: 0.45;
-    }
-    .hero-panel::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(160deg, rgba(30,53,71,0.5) 0%, rgba(24,45,59,0.75) 100%);
-    }
-    @media (max-width: 960px) { .hero-panel { display: none; } }
-
-    /* ── Productos — BLANCO ── */
-    #productos {
-      background: #FFFFFF;
-      clip-path: polygon(0 44px, 100% 0, 100% calc(100% - 44px), 0 100%);
-    }
-    #productos .sec-t { color: #182D3B; }
-    #productos .sec-d { color: #4A6878; }
-    #productos .prod-card {
-      background: #F2F8FA;
-      border-color: rgba(74,155,155,0.2);
-    }
-    #productos .prod-card::before { background: #2D7272; }
-    #productos .prod-card:hover { border-color: #4A9B9B; box-shadow: 0 20px 50px rgba(44,74,90,0.15); }
-    #productos .prod-card:hover::before { background: #4A9B9B; box-shadow: 0 0 16px rgba(74,155,155,0.4); }
-    #productos .prod-name { color: #182D3B; }
-    #productos .prod-desc { color: #4A6878; }
-    #productos .prod-num { color: rgba(74,155,155,0.07); }
-    @media (max-width: 960px) {
-      #productos { clip-path: polygon(0 22px, 100% 0, 100% calc(100% - 22px), 0 100%); }
-    }
-
-    /* ── Imágenes de producto con zoom en hover ── */
-    .prod-img img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.55s ease;
-    }
-    .prod-card:hover .prod-img img { transform: scale(1.06); }
-
-    /* ── Sobre Nosotros — BLANCO ── */
-    #nosotros { background: #FFFFFF; padding: 7rem 4rem; }
-    #nosotros .sec-t { color: #182D3B; }
-    #nosotros .about-text { color: #4A6878; }
-    #nosotros .about-text strong { color: #182D3B; }
-    #nosotros .about-big { -webkit-text-stroke: 1px rgba(44,74,90,0.2); }
-    #nosotros .about-big-label { color: #4A9B9B; }
-    #nosotros .about-city { color: #4A6878; }
-
-    /* Imagen en la sección nosotros */
-    .about-img-card {
-      position: relative; overflow: hidden; border-radius: 3px;
-      box-shadow: 0 24px 64px rgba(24,45,59,0.18);
-    }
-    .about-img-card img {
-      width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block;
-    }
-    .about-img-overlay {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(24,45,59,0.95) 0%, transparent 100%);
-      padding: 3rem 1.8rem 1.8rem;
-    }
-    .about-img-overlay .about-big { font-size: clamp(5rem, 10vw, 7rem); color: transparent; -webkit-text-stroke: 1px rgba(74,155,155,0.6); }
-    .about-img-overlay .about-big-label { color: #6DBCBC; }
-    .about-img-overlay .about-city { color: rgba(255,255,255,0.6); }
-
-    /* ══════════════════════════════════════════
-       HERO — lado izquierdo BLANCO
-    ══════════════════════════════════════════ */
-    #hero { background: #FFFFFF; }
-    .hero-bg::before {
-      background: repeating-linear-gradient(
-        -45deg, transparent, transparent 58px,
-        rgba(74,155,155,0.06) 58px, rgba(74,155,155,0.06) 60px
-      );
-    }
-    /* Textos del hero sobre fondo blanco */
-    .hero-eye  { color: #4A9B9B; }
-    .hero-title { color: #182D3B; }
-    .hero-title .hl { color: #4A9B9B; }
-    .hero-tagline { color: #6B8A9A; font-style: italic; }
-    .hero-slogan-line { color: #2D7272; }
-    .hero-btns .btn-s {
-      color: #2C4A5A;
-      border-color: rgba(44,74,90,0.35);
-    }
-    .hero-btns .btn-s:hover { color: #4A9B9B; border-color: #4A9B9B; }
-    .stat-n { color: #4A9B9B; }
-    .stat-l { color: #4A6878; }
-    .hero-stats::before { background: linear-gradient(to right, #4A9B9B, transparent); }
-    /* El panel derecho ya tiene su propio fondo oscuro con la imagen */
-
-    /* ══════════════════════════════════════════
-       PRODUCTOS — franja superior TEAL + cards BLANCAS
-    ══════════════════════════════════════════ */
-    #productos {
-      /* Franja teal en el tope, blanco desde el 38% */
-      background: linear-gradient(to bottom, #2C4A5A 38%, #FFFFFF 38%);
-    }
-    /* Textos del encabezado sobre el fondo teal */
-    #productos .prod-head .lbl         { color: #6DBCBC; }
-    #productos .prod-head .lbl::before { background: #6DBCBC; }
-    #productos .prod-head .sec-t       { color: #FFFFFF; }
-    #productos .prod-head .sec-d       { color: #A8C8D8; }
-
-    /* ── Sectores — GRIS CLARO ── */
-    #sectores { background: #F2F8FA; }
-    #sectores .sec-t { color: #182D3B; }
-    #sectores .sec-d { color: #4A6878; }
-    #sectores .marquee-wrap::before { background: linear-gradient(to right, #F2F8FA, transparent); }
-    #sectores .marquee-wrap::after  { background: linear-gradient(to left,  #F2F8FA, transparent); }
-    #sectores .s-tag { color: #4A6878; border-color: rgba(74,155,155,0.3); background: #FFFFFF; }
-    #sectores .s-tag.hi { color: #2D7272; border-color: rgba(74,155,155,0.6); background: rgba(74,155,155,0.06); }
-    #sectores .s-tag:hover { color: #182D3B; border-color: #4A9B9B; }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Sesgo Express",
+    "description": "Fábrica de sesgo planchado, abierto y embone en 30 colores. Despacho a todo Colombia.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Cra 70 # 94-64",
+      "addressLocality": "Medellín",
+      "addressRegion": "Antioquia",
+      "addressCountry": "CO"
+    },
+    "telephone": "+573053605645",
+    "openingHours": "Mo-Fr 08:00-17:30",
+    "sameAs": ["https://www.instagram.com/sesgoexpress/"]
+  }
+  </script>
 </head>
 <body>
 
-<!-- ── NAV ─────────────────────────────────── -->
+<!-- ── NAV ── -->
 <nav id="nav">
   <a href="#hero" class="nav-logo">
-    <img src="imagenes/logo sesgo express.jpg" alt="Sesgo Express" class="nav-logo-img">
-    <span class="nav-logo-text">SESGO <em>EXPRESS</em></span>
+    <img src="assets/logo/imagotipo-horizontal-05-negativo-azul.svg" alt="Sesgo Express" height="34">
   </a>
   <ul class="nav-links">
     <li><a href="#productos">Productos</a></li>
-    <li><a href="#corte">Servicio de Corte</a></li>
-    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#corte">Corte</a></li>
+    <li><a href="#colores">Colores</a></li>
     <li><a href="#sectores">Sectores</a></li>
-    <li><a href="#contacto" class="nav-cta">Contactar</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li>
+      <a href="https://wa.me/573053605645?text=Hola%20Sesgo%20Express%2C%20quiero%20cotizar%20sesgo"
+         target="_blank" rel="noopener" class="btn-pill" data-wa="nav">Cotiza por WhatsApp</a>
+    </li>
   </ul>
-  <div class="hamburger" id="ham" onclick="toggleMenu()">
+  <button class="hamburger" id="ham" onclick="toggleMenu()" aria-label="Abrir menú">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
-<div class="mob-menu" id="mobMenu">
-  <a href="#productos"  onclick="toggleMenu()">Productos</a>
-  <a href="#corte"      onclick="toggleMenu()">Corte</a>
-  <a href="#nosotros"   onclick="toggleMenu()">Nosotros</a>
-  <a href="#sectores"   onclick="toggleMenu()">Sectores</a>
-  <a href="#colores"    onclick="toggleMenu()">Colores</a>
-  <a href="#contacto"   onclick="toggleMenu()">Contacto</a>
+<div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Menú">
+  <a href="#productos" onclick="toggleMenu()">Productos</a>
+  <a href="#corte"     onclick="toggleMenu()">Corte</a>
+  <a href="#colores"   onclick="toggleMenu()">Colores</a>
+  <a href="#sectores"  onclick="toggleMenu()">Sectores</a>
+  <a href="#nosotros"  onclick="toggleMenu()">Nosotros</a>
+  <a href="#contacto"  onclick="toggleMenu()">Contacto</a>
+  <a href="https://wa.me/573053605645?text=Hola%20Sesgo%20Express%2C%20quiero%20cotizar%20sesgo"
+     target="_blank" rel="noopener" class="btn-pill" onclick="toggleMenu()" data-wa="mob">Cotiza por WhatsApp</a>
 </div>
 
-<!-- ── HERO ─────────────────────────────────── -->
+<!-- ── HERO ── -->
 <section id="hero">
-  <div class="hero-bg"></div>
-
-  <!-- Panel derecho con imagen real -->
-  <div class="hero-panel">
-    <img src="sesgo%20planchado%20o%20doblado/wh83QkD4ihF2e7T-2arLd_jxZFPZKW.png" alt="Sesgo Express colores">
-  </div>
-
-  <!-- Logo flotante en el hero -->
-  <div class="hero-logo-float">
-    <img src="imagenes/logo sesgo express.jpg" alt="Sesgo Express Logo">
-  </div>
-
-  <div class="hero-content">
-    <div class="hero-eye">Fábrica de Sesgo Textil &nbsp;·&nbsp; Medellín, Colombia</div>
-    <h1 class="hero-title">
-      SESGO<span class="hl">EXPRESS</span>
-    </h1>
-    <p class="hero-tagline">Más de 20 años vistiendo la industria</p>
-    <div class="hero-slogan-line">Calidad &amp; Rapidez</div>
+  <div class="hero-s" aria-hidden="true">S</div>
+  <div class="hero-content rv">
+    <p class="hero-eye">Fábrica de sesgo textil &nbsp;·&nbsp; Medellín, Colombia</p>
+    <h1 class="hero-h1">Tu sesgo llega en <span class="hl">MENOS DE 5 DÍAS</span> a <span class="hl">TODO EL PAÍS</span></h1>
+    <p class="hero-sub">Fábrica de sesgo abierto, planchado y embone en 30 colores. Calidad y rapidez desde 2006.</p>
     <div class="hero-btns">
-      <a href="#productos" class="btn-p">Ver Productos</a>
-      <a href="#contacto"  class="btn-s">Contactar</a>
+      <a href="https://wa.me/573053605645?text=Hola%20Sesgo%20Express%2C%20quiero%20cotizar%20sesgo"
+         target="_blank" rel="noopener" class="btn-pill" data-wa="hero">Cotiza por WhatsApp</a>
+      <a href="#productos" class="btn-outline-w">Ver productos</a>
     </div>
-  </div>
-
-  <div class="hero-stats">
-    <div>
-      <div class="stat-n">+20</div>
-      <div class="stat-l">Años de Experiencia</div>
-    </div>
-    <div>
-      <div class="stat-n">50m</div>
-      <div class="stat-l">Por Carrete</div>
-    </div>
-    <div>
-      <div class="stat-n">3</div>
-      <div class="stat-l">Tipos de Corte</div>
-    </div>
-    <div>
-      <div class="stat-n">∞</div>
-      <div class="stat-l">Colores Disponibles</div>
+    <div class="sello">
+      <img src="assets/logo/isotipo-blanco.svg" alt="" width="28" height="28" style="flex-shrink:0" aria-hidden="true">
+      <div class="sello-txt">
+        <div class="sello-grande">&lt;5 DÍAS</div>
+        <div class="sello-chico">Hábiles &nbsp;·&nbsp; Todo el país</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── PRODUCTOS ─────────────────────────────── -->
+<!-- ── CIFRAS ── -->
+<section id="cifras">
+  <div class="cifras-wrap">
+    <div class="cifra rv"><div class="cifra-n">2006</div><div class="cifra-l">Desde este año</div></div>
+    <div class="cifra rv"><div class="cifra-n">30</div><div class="cifra-l">Colores disponibles</div></div>
+    <div class="cifra rv"><div class="cifra-n">&lt;5 días</div><div class="cifra-l">Tiempo de despacho</div></div>
+    <div class="cifra rv"><div class="cifra-n">Todo CO</div><div class="cifra-l">Despacho a todo el país</div></div>
+  </div>
+</section>
+
+<!-- ── PRODUCTOS ── -->
 <section class="sec" id="productos">
   <div class="inner">
-    <div class="prod-head rv">
-      <div class="lbl">Nuestros Productos</div>
-      <h2 class="sec-t">LÍNEA DE<br>SESGOS</h2>
-      <p class="sec-d">Fabricamos sesgo textil de alta calidad en diferentes acabados y presentaciones para satisfacer cada necesidad de la industria de la confección.</p>
+    <div class="sec-head rv">
+      <div class="sec-lbl">Nuestros productos</div>
+      <h2 class="sec-t">Línea de <span class="hl">SESGOS</span></h2>
+      <p class="sec-d">Fabricamos sesgo de alta calidad en diferentes acabados. Pedido mínimo 1.000 m.</p>
     </div>
 
     <div class="prod-grid">
 
-      <!-- Sesgo Empitado -->
       <div class="prod-card rv">
         <div class="prod-img">
-          <img src="sesgo%20embonado/Qc0ILeg_oWiTwelsspUNl_fa5Ky7Tc.png" alt="Sesgo empitado en carretes Sesgo Express">
+          <img src="assets/fotos/sesgo-planchado.png"
+               alt="Sesgo planchado en varios colores Sesgo Express" loading="lazy">
         </div>
-        <div class="prod-body">
-          <div class="prod-num">01</div>
-          <svg class="prod-icon" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.4"/>
-            <circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="1.4"/>
-            <circle cx="24" cy="24" r="6"  stroke="currentColor" stroke-width="1.4"/>
-            <circle cx="24" cy="24" r="2.5" fill="currentColor" opacity="0.5"/>
-          </svg>
-          <div class="prod-name">Sesgo Empitado / Embonado</div>
-          <p class="prod-desc">Sesgo terminado y enrollado en carretes de 50 metros. Presentación profesional lista para usar en máquina empitadora. Máximo rendimiento en producción.</p>
-          <span class="prod-tag">Carretes de 50 mts</span>
-        </div>
+        <div class="prod-name">Sesgo planchado</div>
+        <p class="prod-desc">Doblado y planchado, listo para ribetear. Anchos: 13, 16, 20, 25 y 30 mm.</p>
+        <span class="prod-tag">Listo para usar</span>
       </div>
 
-      <!-- Sesgo Abierto -->
       <div class="prod-card rv">
         <div class="prod-img">
-          <img src="servicios%20de%20corte%20de%20sesgo/imagen1.png" alt="Sesgo abierto — rodaja individual Sesgo Express">
+          <img src="servicios%20de%20corte%20de%20sesgo/imagen1.png"
+               alt="Sesgo abierto en rollo Sesgo Express" loading="lazy">
         </div>
-        <div class="prod-body">
-          <div class="prod-num">02</div>
-          <svg class="prod-icon" viewBox="0 0 48 48" fill="none">
-            <path d="M8 24H40"  stroke="currentColor" stroke-width="2"   stroke-linecap="round"/>
-            <path d="M8 18H40"  stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".55"/>
-            <path d="M8 30H40"  stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".55"/>
-            <path d="M8 12H40"  stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity=".25"/>
-            <path d="M8 36H40"  stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity=".25"/>
-          </svg>
-          <div class="prod-name">Sesgo Abierto</div>
-          <p class="prod-desc">Tira de sesgo sin doblar para quienes prefieren doblar a su medida. Ideal para aplicaciones especiales o máquinas con guía propia. Variedad de materiales y anchos.</p>
-          <span class="prod-tag">Venta al por mayor</span>
-        </div>
+        <div class="prod-name">Sesgo abierto</div>
+        <p class="prod-desc">Tira sin doblar, a la medida que necesites. Ideal para aplicaciones especiales o máquinas con guía propia.</p>
+        <span class="prod-tag">A tu medida</span>
       </div>
 
-      <!-- Sesgo Planchado -->
       <div class="prod-card rv">
         <div class="prod-img">
-          <img src="sesgo%20planchado%20o%20doblado/WhatsApp%20Image%202026-03-21%20at%2010.14.44%20%283%29.jpeg" alt="Sesgo planchado apilado en varios colores">
+          <img src="assets/fotos/sesgo-empitado.png"
+               alt="Embone de sesgo en carretas Sesgo Express" loading="lazy">
         </div>
-        <div class="prod-body">
-          <div class="prod-num">03</div>
-          <svg class="prod-icon" viewBox="0 0 48 48" fill="none">
-            <path d="M10 28H38V36H10z" stroke="currentColor" stroke-width="1.4"/>
-            <path d="M10 12H38V20H10z" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
-            <path d="M24 20V28" stroke="currentColor" stroke-width="1.4"/>
-            <path d="M10 20L24 28L38 20" stroke="currentColor" stroke-width="1" opacity=".4" stroke-dasharray="3 2"/>
-          </svg>
-          <div class="prod-name">Sesgo Planchado</div>
-          <p class="prod-desc">Sesgo con doblez perfecto y planchado para un acabado impecable. Listo para aplicar directamente en la prenda. Mayor resistencia y uniformidad en toda la línea de producción.</p>
-          <span class="prod-tag">Alta calidad</span>
-        </div>
+        <div class="prod-name">Embone</div>
+        <p class="prod-desc">En carretas de 50 m, para máquina embonadora. Presentación profesional lista para producción.</p>
+        <span class="prod-tag">Carretas de 50 m</span>
       </div>
 
-      <!-- Servicio Corte -->
-      <div class="prod-card rv" style="border-color: rgba(74,155,155,.3)">
-        <div class="prod-img">
-          <img src="servicios%20de%20corte%20de%20sesgo/neiiZntPmTBi1FdQFVCby_sD4ZUCHV.png" alt="Rollos de sesgo para servicio de corte Sesgo Express">
-        </div>
-        <div class="prod-body">
-          <div class="prod-num">04</div>
-          <svg class="prod-icon" viewBox="0 0 48 48" fill="none">
-            <path d="M8 40L40 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="15" cy="33" r="7" stroke="currentColor" stroke-width="1.4"/>
-            <circle cx="33" cy="15" r="7" stroke="currentColor" stroke-width="1.4"/>
-            <circle cx="15" cy="33" r="2.5" fill="currentColor" opacity=".4"/>
-            <circle cx="33" cy="15" r="2.5" fill="currentColor" opacity=".4"/>
-          </svg>
-          <div class="prod-name">Servicio de Corte</div>
-          <p class="prod-desc">Trae tu tela y la cortamos como la necesites: al hilo, al través o al sesgo. Equipos industriales de corte para precisión milimétrica. Ideal para producción a medida.</p>
-          <span class="prod-tag">Servicio especializado</span>
-        </div>
-      </div>
+    </div>
 
+    <div class="prod-nota rv">
+      <strong>Materiales:</strong> poliéster, algodón y satín &nbsp;&nbsp;·&nbsp;&nbsp;
+      <strong>Pedido mínimo:</strong> 1.000 m &nbsp;&nbsp;·&nbsp;&nbsp;
+      <strong>Corte desde</strong> 5 m
     </div>
   </div>
 </section>
 
-<!-- ── CORTE SERVICE ─────────────────────────── -->
-<section id="corte" style="background: var(--bg3); padding: 7rem 4rem; position: relative; overflow: hidden;">
-  <div style="position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 22px,rgba(74,155,155,.025) 22px,rgba(74,155,155,.025) 23px);pointer-events:none;"></div>
-  <div class="corte-wrap inner">
+<!-- ── CORTE ── -->
+<section class="sec" id="corte">
+  <div class="corte-wrap">
 
     <div class="rv">
-      <div class="lbl">Servicio Exclusivo</div>
-      <h2 class="sec-t">SERVICIO DE<br>CORTE A MEDIDA</h2>
-      <p class="sec-d" style="max-width:none">Tienes tu propia tela y necesitas cortarla con precisión industrial. Trae tu rollo o piezas — las cortamos exactamente como lo necesitas para tu proceso productivo.</p>
-      <p class="sec-d" style="max-width:none; margin-top:1rem">Contamos con equipos industriales que garantizan exactitud en cada corte, ya sea para pequeñas series o grandes volúmenes de producción.</p>
-
-      <div class="corte-modes">
-        <div class="corte-mode">
-          <span class="corte-mode-n">Al Hilo</span>
-          <span class="corte-mode-d">Paralelo a los hilos de urdimbre — mayor resistencia longitudinal</span>
+      <div class="sec-lbl">Servicio especializado</div>
+      <h2 class="sec-t">¿Tienes tu tela? Te la cortamos <span class="hl">DESDE 5 METROS</span></h2>
+      <p class="sec-d" style="margin-bottom:1.6rem">Corte al hilo, al través o al sesgo (45°) sobre la tela que nos traes. Equipos industriales para precisión milimétrica.</p>
+      <a href="https://wa.me/573053605645?text=Hola%2C%20necesito%20servicio%20de%20corte"
+         target="_blank" rel="noopener" class="btn-pill" data-wa="corte">Cotiza el corte</a>
+      <div class="corte-tipos">
+        <div class="corte-tipo">
+          <span class="corte-tipo-n">Al hilo</span>
+          <span class="corte-tipo-d">Paralelo a la urdimbre — mayor resistencia longitudinal</span>
         </div>
-        <div class="corte-mode">
-          <span class="corte-mode-n">Al Través</span>
-          <span class="corte-mode-d">Perpendicular a los hilos de trama — excelente para ojales y puños</span>
+        <div class="corte-tipo">
+          <span class="corte-tipo-n">Al través</span>
+          <span class="corte-tipo-d">Perpendicular a la trama — para ojales y puños</span>
         </div>
-        <div class="corte-mode">
-          <span class="corte-mode-n">Al Sesgo</span>
-          <span class="corte-mode-d">Diagonal a 45° — mayor elasticidad y adaptación a curvas</span>
+        <div class="corte-tipo">
+          <span class="corte-tipo-n">Al sesgo</span>
+          <span class="corte-tipo-d">Diagonal a 45° — mayor elasticidad y adaptación a curvas</span>
         </div>
       </div>
     </div>
 
-    <!-- Foto real de los tipos de corte -->
-    <div class="corte-img-wrap rv">
-      <img src="imagenes/portada facebook.png" alt="Tipos de corte: al hilo, al través y al sesgo" class="corte-photo">
+    <div class="rv">
+      <img src="assets/fotos/tipos-de-cortes.png"
+           alt="Rollos de tela para servicio de corte en Sesgo Express Medellín"
+           class="corte-photo" loading="lazy">
     </div>
 
   </div>
 </section>
 
-<!-- ── SOBRE NOSOTROS ─────────────────────────── -->
-<section class="sec" id="nosotros">
-  <div class="about-wrap inner">
-
-    <div class="about-vis rv">
-      <div class="about-img-card">
-        <img src="servicios%20de%20corte%20de%20sesgo/O_qyfaMdSInY4ZrNwPlNI_lTjbgxLz.png" alt="Bodega y almacén Sesgo Express Medellín">
-        <div class="about-img-overlay">
-          <span class="about-big">+20</span>
-          <span class="about-big-label">Años de Experiencia</span>
-          <div class="about-city" style="margin-top:0.6rem">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-            Medellín, Antioquia — Colombia
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="rv" style="transition-delay:.15s">
-      <div class="lbl">Sobre Nosotros</div>
-      <h2 class="sec-t">MÁS DE DOS<br>DÉCADAS DE<br>PRECISIÓN</h2>
-      <p class="about-text">Sesgo Express nació en Medellín con una misión clara: proveer a la industria textil colombiana con el sesgo de mayor calidad, en los tiempos más cortos del mercado. Nuestro slogan no es solo una promesa — es nuestra forma de trabajar cada día.</p>
-      <p class="about-text">Durante más de 20 años hemos acompañado a fabricantes, talleres y diseñadores de todo el sector confección. Nuestro conocimiento en materiales, corte y acabados nos ha convertido en un aliado estratégico para la industria en Antioquia y todo el país.</p>
-      <p class="about-text">Desde fábricas de gorras y camisetas hasta fabricantes de edredones, marroquinería y calzado — <strong>si tu producto lleva sesgo, lo hacemos nosotros</strong>. Con la precisión y la rapidez que solo 20 años de experiencia pueden dar.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── POR QUÉ ELEGIRNOS ─────────────────────── -->
-<section class="sec" id="ventajas">
+<!-- ── CÓMO FUNCIONA ── -->
+<section class="sec" id="como">
   <div class="inner">
-    <div class="why-head rv">
-      <div class="lbl" style="justify-content:center"><span style="width:1.5rem;height:1px;background:var(--gold);display:inline-block;"></span>&nbsp;Por Qué Elegirnos</div>
-      <h2 class="sec-t">NUESTRAS<br>VENTAJAS</h2>
+    <div class="sec-head rv" style="text-align:center">
+      <div class="sec-lbl sec-lbl-w">Proceso</div>
+      <h2 class="sec-t sec-t-w"><span class="hl">&lt;5 DÍAS HÁBILES</span>, de tu pago a tu taller</h2>
     </div>
 
-    <div class="why-grid">
-
-      <div class="why-item rv">
-        <svg class="why-icon" viewBox="0 0 38 38" fill="none">
-          <circle cx="19" cy="19" r="16" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M19 10V19L25 23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <div class="why-t">+20 Años de Trayectoria</div>
-        <p class="why-d">Décadas de experiencia en materiales y técnicas textiles que nos permiten asesorarte con conocimiento real del sector.</p>
+    <div class="pasos-grid">
+      <div class="paso rv">
+        <div class="paso-n">1</div>
+        <div class="paso-t">Nos escribes</div>
+        <p class="paso-d">Por WhatsApp con tipo, ancho, color y metros.</p>
       </div>
-
-      <div class="why-item rv" style="transition-delay:.1s">
-        <svg class="why-icon" viewBox="0 0 38 38" fill="none">
-          <path d="M6 19L14 27L32 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div class="why-t">Entrega Rápida</div>
-        <p class="why-d">Calidad y rapidez es nuestro compromiso. Tiempos de entrega competitivos para que tu producción nunca se detenga.</p>
+      <div class="paso rv">
+        <div class="paso-n">2</div>
+        <div class="paso-t">Cotizamos hoy</div>
+        <p class="paso-d">Te enviamos precio y disponibilidad el mismo día.</p>
       </div>
-
-      <div class="why-item rv" style="transition-delay:.2s">
-        <svg class="why-icon" viewBox="0 0 38 38" fill="none">
-          <rect x="7" y="16" width="5" height="15" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="16" y="11" width="5" height="20" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="25" y="7"  width="5" height="24" stroke="currentColor" stroke-width="1.4"/>
-        </svg>
-        <div class="why-t">Amplia Variedad</div>
-        <p class="why-d">Extensa carta de colores, múltiples materiales y anchos. Sesgo empitado, abierto y planchado en una sola empresa.</p>
+      <div class="paso rv">
+        <div class="paso-n">3</div>
+        <div class="paso-t">Pagas y fabricamos</div>
+        <p class="paso-d">Confirmado el pago, entramos a producción.</p>
       </div>
-
-      <div class="why-item rv" style="transition-delay:.05s">
-        <svg class="why-icon" viewBox="0 0 38 38" fill="none">
-          <path d="M10 32L16 22L21 27L27 18L32 22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="10" cy="32" r="1.8" fill="currentColor"/>
-        </svg>
-        <div class="why-t">Calidad Garantizada</div>
-        <p class="why-d">Proceso de fabricación controlado que asegura uniformidad en color, ancho y acabado en cada carrete y cada metro.</p>
+      <div class="paso rv">
+        <div class="paso-n">4</div>
+        <div class="paso-t">Despachamos</div>
+        <p class="paso-d">A tu ciudad en menos de 5 días hábiles.</p>
       </div>
+    </div>
 
-      <div class="why-item rv" style="transition-delay:.15s">
-        <svg class="why-icon" viewBox="0 0 38 38" fill="none">
-          <path d="M19 6L25 12V18C25 24 22 27 19 28C16 27 13 24 13 18V12L19 6Z" stroke="currentColor" stroke-width="1.4"/>
-        </svg>
-        <div class="why-t">Venta al Por Mayor</div>
-        <p class="why-d">Precios competitivos para compras por volumen. Ideales para fábricas, talleres y distribuidores del sector textil.</p>
-      </div>
+    <p class="como-nota">Despacho en menos de 5 días hábiles contados a partir de la confirmación del pago.</p>
 
-      <div class="why-item rv" style="transition-delay:.25s">
-        <svg class="why-icon" viewBox="0 0 38 38" fill="none">
-          <circle cx="19" cy="12" r="6" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M7 32C7 26 12.4 21 19 21C25.6 21 31 26 31 32" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-          <path d="M26 28L30 32L34 26" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div class="why-t">Asesoría Personalizada</div>
-        <p class="why-d">Te ayudamos a elegir el tipo de sesgo más adecuado para tu producto, material y proceso de confección específico.</p>
-      </div>
-
+    <div style="text-align:center;margin-top:2.2rem" class="rv">
+      <a href="https://wa.me/573053605645?text=Hola%20Sesgo%20Express%2C%20quiero%20cotizar%20sesgo"
+         target="_blank" rel="noopener" class="btn-pill" data-wa="como">Empieza aquí</a>
     </div>
   </div>
 </section>
 
-<!-- ── SECTORES ─────────────────────────────── -->
+<!-- ── CARTA DE COLORES ── -->
+<section class="sec" id="colores">
+  <div class="inner">
+    <div class="sec-head rv">
+      <div class="sec-lbl">Carta de colores</div>
+      <h2 class="sec-t"><span class="hl">30 COLORES</span> desde mil metros</h2>
+    </div>
+
+    <div class="rv" style="max-width:520px;margin:0 auto">
+      <img src="Branding/Carta%20de%20colores%20%C2%B7%20digital%20(WhatsApp%20y%20redes)%402x.png"
+           alt="Carta de 30 colores Sesgo Express — referencia en pantalla"
+           style="width:100%;border-radius:16px;display:block" loading="lazy">
+    </div>
+    <p class="colores-aviso rv">Colores de referencia en pantalla. Pide tu muestra física antes de confirmar tu pedido.</p>
+    <div class="colores-cta rv">
+      <a href="https://wa.me/573053605645?text=Hola%2C%20quiero%20recibir%20la%20carta%20de%20colores"
+         target="_blank" rel="noopener" class="btn-pill" data-wa="colores">Pide la carta por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTORES ── -->
 <section class="sec" id="sectores">
   <div class="inner">
-    <div class="sect-head rv">
-      <div class="lbl">Sectores que Atendemos</div>
-      <h2 class="sec-t">INDUSTRIAS<br>QUE CONFÍAN<br>EN NOSOTROS</h2>
-      <p class="sec-d">El sesgo es un insumo esencial en decenas de industrias. Atendemos cualquier sector donde se necesite calidad y precisión.</p>
+    <div class="sec-head rv">
+      <div class="sec-lbl">Sectores que atendemos</div>
+      <h2 class="sec-t">Industrias que <span class="hl">CONFÍAN</span> en nosotros</h2>
     </div>
-  </div>
 
-  <div class="marquee-wrap" style="margin-top:3rem">
-    <div class="marquee-track">
-      <span class="s-tag hi">Confección Industrial</span>
-      <span class="s-tag">Fábricas de Gorras</span>
-      <span class="s-tag hi">Camisetas y Polos</span>
-      <span class="s-tag">Edredones y Ropa de Cama</span>
-      <span class="s-tag hi">Marroquinería</span>
-      <span class="s-tag">Uniformes Corporativos</span>
-      <span class="s-tag">Dotaciones Industriales</span>
-      <span class="s-tag hi">Lencería y Ropa Interior</span>
-      <span class="s-tag">Calzado</span>
-      <span class="s-tag">Textiles para Hogar</span>
-      <span class="s-tag hi">Moda y Diseño</span>
-      <span class="s-tag">Tapicería y Decoración</span>
-      <!-- duplicado para loop continuo -->
-      <span class="s-tag hi">Confección Industrial</span>
-      <span class="s-tag">Fábricas de Gorras</span>
-      <span class="s-tag hi">Camisetas y Polos</span>
-      <span class="s-tag">Edredones y Ropa de Cama</span>
-      <span class="s-tag hi">Marroquinería</span>
-      <span class="s-tag">Uniformes Corporativos</span>
-      <span class="s-tag">Dotaciones Industriales</span>
-      <span class="s-tag hi">Lencería y Ropa Interior</span>
-      <span class="s-tag">Calzado</span>
-      <span class="s-tag">Textiles para Hogar</span>
-      <span class="s-tag hi">Moda y Diseño</span>
-      <span class="s-tag">Tapicería y Decoración</span>
+    <div class="sectores-grid">
+
+      <div class="sector-card rv">
+        <div class="sector-img">
+          <img src="assets/fotos/pijama.png" alt="Sesgo Express para pijamas y lencería" loading="lazy">
+        </div>
+        <div class="sector-body">
+          <div class="sector-name">Pijamas y lencería</div>
+          <p class="sector-desc">El <span class="hl">EMBONE</span> que define cada borde.</p>
+        </div>
+      </div>
+
+      <div class="sector-card rv">
+        <div class="sector-img">
+          <img src="assets/fotos/edredon.png" alt="Sesgo Express para edredones y ropa de hogar" loading="lazy">
+        </div>
+        <div class="sector-body">
+          <div class="sector-name">Hogar</div>
+          <p class="sector-desc">Ribetes que <span class="hl">TERMINAN BIEN</span> tu edredón.</p>
+        </div>
+      </div>
+
+      <div class="sector-card rv">
+        <div class="sector-img">
+          <img src="assets/fotos/Maletin.png" alt="Sesgo Express para marroquinería y maletines" loading="lazy">
+        </div>
+        <div class="sector-body">
+          <div class="sector-name">Marroquinería</div>
+          <p class="sector-desc">Bordes que <span class="hl">AGUANTAN</span> el viaje.</p>
+        </div>
+      </div>
+
+      <div class="sector-card rv">
+        <div class="sector-img">
+          <img src="assets/fotos/gorra.png" alt="Sesgo Express para gorras y dotación" loading="lazy">
+        </div>
+        <div class="sector-body">
+          <div class="sector-name">Gorras y dotación</div>
+          <p class="sector-desc">Por dentro también se nota la <span class="hl">CALIDAD</span>.</p>
+        </div>
+      </div>
+
+      <div class="sector-card rv">
+        <div class="sector-img">
+          <img src="assets/fotos/almohada.png" alt="Sesgo Express para almohadas" loading="lazy">
+        </div>
+        <div class="sector-body">
+          <div class="sector-name">Almohadas</div>
+          <p class="sector-desc">Ribetes que <span class="hl">TERMINAN BIEN</span> tu almohada.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sectores-lista rv">
+      <p>También atendemos:</p>
+      <div class="stags">
+        <span class="stag">Confección industrial y uniformes</span>
+        <span class="stag">Moda y camisetas</span>
+        <span class="stag">Ropa de bebé</span>
+        <span class="stag">Tapicería y cojinería</span>
+        <span class="stag">Calzado</span>
+        <span class="stag">Mercerías</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── CARTA DE COLORES ─────────────────────── -->
-<section class="sec" id="colores" style="background:var(--bg3);position:relative;overflow:hidden">
-  <div style="position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 38px,rgba(74,155,155,.02) 38px,rgba(74,155,155,.02) 39px);pointer-events:none;"></div>
-  <div class="col-wrap inner">
+<!-- ── NOSOTROS ── -->
+<section class="sec" id="nosotros">
+  <div class="nosotros-wrap">
 
     <div class="rv">
-      <div class="lbl">Carta de Colores</div>
-      <h2 class="sec-t">AMPLIA<br>PALETA DE<br>COLORES</h2>
-      <p class="sec-d" style="margin-top:1rem">Contamos con una extensa carta de colores para encontrar la combinación perfecta para tu producto. Consulta disponibilidad por volumen.</p>
-      <a href="#contacto" class="btn-p" style="display:inline-block;margin-top:2rem;text-align:center">Solicitar Catálogo</a>
+      <img src="servicios%20de%20corte%20de%20sesgo/O_qyfaMdSInY4ZrNwPlNI_lTjbgxLz.png"
+           alt="Bodega y producción Sesgo Express Medellín" class="nosotros-img" loading="lazy">
     </div>
 
-    <div class="palette rv" style="transition-delay:.2s;position:relative;z-index:1">
-      <!-- Fila 1: Neutros -->
-      <div class="swatch" style="background:#0D0D0D" title="Negro"></div>
-      <div class="swatch" style="background:#2E2E2E" title="Gris Oscuro"></div>
-      <div class="swatch" style="background:#5A5A5A" title="Gris Medio"></div>
-      <div class="swatch" style="background:#9E9E9E" title="Gris Claro"></div>
-      <div class="swatch" style="background:#DEDEDE" title="Plateado"></div>
-      <div class="swatch" style="background:#F5F5F5" title="Blanco"></div>
-      <!-- Fila 2: Rojos / Rosas -->
-      <div class="swatch" style="background:#B71C1C" title="Rojo Oscuro"></div>
-      <div class="swatch" style="background:#F44336" title="Rojo"></div>
-      <div class="swatch" style="background:#EF9A9A" title="Rosa Claro"></div>
-      <div class="swatch" style="background:#E91E63" title="Fucsia"></div>
-      <div class="swatch" style="background:#9C27B0" title="Morado"></div>
-      <div class="swatch" style="background:#673AB7" title="Violeta"></div>
-      <!-- Fila 3: Azules -->
-      <div class="swatch" style="background:#1565C0" title="Azul Marino"></div>
-      <div class="swatch" style="background:#1976D2" title="Azul Royal"></div>
-      <div class="swatch" style="background:#42A5F5" title="Azul Claro"></div>
-      <div class="swatch" style="background:#03A9F4" title="Celeste"></div>
-      <div class="swatch" style="background:#00BCD4" title="Cian"></div>
-      <div class="swatch" style="background:#009688" title="Verde Azulado"></div>
-      <!-- Fila 4: Verdes -->
-      <div class="swatch" style="background:#1B5E20" title="Verde Oscuro"></div>
-      <div class="swatch" style="background:#388E3C" title="Verde Medio"></div>
-      <div class="swatch" style="background:#66BB6A" title="Verde Claro"></div>
-      <div class="swatch" style="background:#8BC34A" title="Verde Lima"></div>
-      <div class="swatch" style="background:#CDDC39" title="Lima"></div>
-      <div class="swatch" style="background:#FFEB3B" title="Amarillo"></div>
-      <!-- Fila 5: Cálidos -->
-      <div class="swatch" style="background:#FFC107" title="Ámbar"></div>
-      <div class="swatch" style="background:#FF9800" title="Naranja"></div>
-      <div class="swatch" style="background:#FF5722" title="Naranja Oscuro"></div>
-      <div class="swatch" style="background:#795548" title="Café"></div>
-      <div class="swatch" style="background:#A1887F" title="Café Claro"></div>
-      <div class="swatch" style="background:#D7CCC8" title="Crema"></div>
-      <!-- Fila 6: Especiales -->
-      <div class="swatch" style="background:#CA8F1A" title="Dorado"></div>
-      <div class="swatch" style="background:#EAB040" title="Oro Claro"></div>
-      <div class="swatch" style="background:#F5E6C0" title="Marfil"></div>
-      <div class="swatch" style="background:#006064" title="Verde Petróleo"></div>
-      <div class="swatch" style="background:#37474F" title="Azul Gris Oscuro"></div>
-      <div class="swatch" style="background:#4E342E" title="Marrón Oscuro"></div>
+    <div class="rv" style="transition-delay:.12s">
+      <div class="sec-lbl">Sobre nosotros</div>
+      <h2 class="sec-t">Fabricando sesgo <span class="hl">DESDE 2006</span></h2>
+      <div class="nosotros-text">
+        <p>Somos una fábrica de Medellín con más de veinte años en el oficio. Producimos con maquinaria automática para entregarte rápido sin sacrificar calidad: mismo ancho, mismo doblez, rollo tras rollo.</p>
+        <p>Desde fábricas de gorras y camisetas hasta fabricantes de edredones, marroquinería y calzado — si tu producto lleva sesgo, lo hacemos nosotros.</p>
+      </div>
+      <div class="ventajas-list">
+        <div class="ventaja">
+          <div class="ventaja-ico">
+            <img src="assets/iconos/menos-de-5-dias-azul-sobre-rosado.svg" alt="" width="34" height="34">
+          </div>
+          <span class="ventaja-txt">Despacho en menos de 5 días hábiles</span>
+        </div>
+        <div class="ventaja">
+          <div class="ventaja-ico">
+            <img src="assets/iconos/todo-el-pais-azul-sobre-rosado.svg" alt="" width="34" height="34">
+          </div>
+          <span class="ventaja-txt">A cualquier ciudad de Colombia</span>
+        </div>
+        <div class="ventaja">
+          <div class="ventaja-ico">
+            <img src="assets/iconos/30-colores-azul-sobre-rosado.svg" alt="" width="34" height="34">
+          </div>
+          <span class="ventaja-txt">30 colores disponibles</span>
+        </div>
+        <div class="ventaja">
+          <div class="ventaja-ico">
+            <img src="assets/iconos/pedido-por-chat-azul-sobre-rosado.svg" alt="" width="34" height="34">
+          </div>
+          <span class="ventaja-txt">Atención directa por WhatsApp</span>
+        </div>
+        <div class="ventaja">
+          <div class="ventaja-ico">
+            <img src="assets/iconos/medidas-azul-sobre-rosado.svg" alt="" width="34" height="34">
+          </div>
+          <span class="ventaja-txt">Calidad constante, rollo tras rollo</span>
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- ── CONTACTO ─────────────────────────────── -->
-<section id="contacto">
-  <div class="cnt-wrap">
+<!-- TESTIMONIOS — pendiente citas reales
+<section class="sec" id="testimonios" style="background:var(--rosado)">
+  <div class="inner">
+    <div class="sec-head" style="text-align:center">
+      <div class="sec-lbl">Testimonios</div>
+      <h2 class="sec-t">Lo que dicen <span class="hl">NUESTROS CLIENTES</span></h2>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- ── FAQ ── -->
+<section class="sec" id="faq">
+  <div class="inner">
+    <div class="sec-head rv" style="text-align:center">
+      <div class="sec-lbl">Preguntas frecuentes</div>
+      <h2 class="sec-t" style="max-width:none">Resolvemos tus dudas</h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>¿Cuál es el pedido mínimo?</summary>
+        <div class="faq-r">1.000 m en sesgo abierto, planchado y embone. El servicio de corte es desde 5 m.</div>
+      </details>
+      <details>
+        <summary>¿En cuánto tiempo despachan?</summary>
+        <div class="faq-r">En menos de 5 días hábiles desde la confirmación del pago.</div>
+      </details>
+      <details>
+        <summary>¿Despachan a mi ciudad?</summary>
+        <div class="faq-r">Sí, despachamos a cualquier ciudad de Colombia.</div>
+      </details>
+      <details>
+        <summary>¿Qué anchos manejan?</summary>
+        <div class="faq-r">Planchado: 13, 16, 20, 25 y 30 mm. Abierto: a la medida que necesites. Embone: carretas de 50 m.</div>
+      </details>
+      <details>
+        <summary>¿Qué materiales tienen?</summary>
+        <div class="faq-r">Poliéster, algodón y satín.</div>
+      </details>
+      <details>
+        <summary>¿Cómo hago mi pedido?</summary>
+        <div class="faq-r">Por WhatsApp: escríbenos con el tipo de sesgo, ancho, número de color de nuestra carta y los metros que necesitas. Te cotizamos el mismo día.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACTO ── -->
+<section class="sec" id="contacto">
+  <div class="contacto-wrap">
 
     <div class="rv">
-      <h2 class="cnt-title">HABLEMOS<br>DE TU <span>PROYECTO</span></h2>
-      <p class="cnt-intro">Contáctanos por nuestras redes sociales o visítanos en Medellín. Atendemos pedidos al por mayor para toda la cadena productiva textil.</p>
+      <h2 class="cnt-title">Hablemos de tu <span class="hl">PROYECTO</span></h2>
+      <p class="cnt-desc">Escríbenos por WhatsApp o visítanos en Medellín. Atendemos pedidos al por mayor para toda la cadena productiva textil.</p>
 
       <div class="cnt-items">
         <div class="cnt-item">
           <div class="cnt-ico">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div>
             <div class="cnt-lbl">Ubicación</div>
-            <span class="cnt-val">Medellín, Antioquia — Colombia</span>
+            <span class="cnt-val">Cra 70 # 94-64, Medellín, Antioquia</span>
           </div>
         </div>
-
         <div class="cnt-item">
           <div class="cnt-ico">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16v.92z"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16v.92z"/></svg>
           </div>
           <div>
-            <div class="cnt-lbl">Teléfono / WhatsApp</div>
-            <!--
-              ACTUALIZAR: Reemplaza el enlace wa.me con tu número real
-              Formato: https://wa.me/573053605645 (código Colombia 57 + número sin espacios)
-            -->
-            <a href="https://www.instagram.com/sesgoexpress" target="_blank" class="cnt-val">Ver en Instagram → @sesgoexpress</a>
+            <div class="cnt-lbl">WhatsApp</div>
+            <a href="https://wa.me/573053605645?text=Hola%20Sesgo%20Express%2C%20quiero%20cotizar%20sesgo"
+               target="_blank" rel="noopener" class="cnt-val" data-wa="contacto">305 360 5645</a>
           </div>
         </div>
-
         <div class="cnt-item">
           <div class="cnt-ico">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16v.92z"/></svg>
           </div>
           <div>
-            <div class="cnt-lbl">Horario de Atención</div>
-            <span class="cnt-val">Lunes a Viernes · 8:00 am – 5:30 pm</span>
+            <div class="cnt-lbl">Teléfono</div>
+            <a href="tel:+573215435224" class="cnt-val">321 543 5224</a>
           </div>
         </div>
-
         <div class="cnt-item">
           <div class="cnt-ico">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="3" width="20" height="14" rx="2"/>
-              <path d="m22 3-10 9L2 3"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div>
-            <div class="cnt-lbl">Pedidos y Cotizaciones</div>
-            <span class="cnt-val">A través de nuestras redes sociales</span>
+            <div class="cnt-lbl">Horario de atención</div>
+            <span class="cnt-val">Lunes a viernes · 8:00 a. m. – 5:30 p. m.</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="rv" style="transition-delay:.15s">
+    <div class="rv" style="transition-delay:.12s">
       <div class="soc-btns">
-
-        <a href="https://www.instagram.com/sesgoexpress?igsh=NTZpZGtjd3hsNjN3" target="_blank" rel="noopener" class="soc-btn">
-          <svg class="soc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <a href="https://wa.me/573053605645?text=Hola%20Sesgo%20Express%2C%20quiero%20cotizar%20sesgo"
+           target="_blank" rel="noopener" class="soc-btn" data-wa="contacto-btn">
+          <svg class="soc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+          <span class="soc-name">WhatsApp</span>
+          <span class="soc-handle">305 360 5645</span>
+        </a>
+        <a href="https://www.instagram.com/sesgoexpress/" target="_blank" rel="noopener" class="soc-btn">
+          <svg class="soc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
             <circle cx="12" cy="12" r="4"/>
             <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
@@ -1218,83 +1017,73 @@
           <span class="soc-name">Instagram</span>
           <span class="soc-handle">@sesgoexpress</span>
         </a>
-
-        <!--
-          ACTUALIZAR: Reemplaza href="#" con la URL de tu Facebook
-          Ejemplo: href="https://www.facebook.com/sesgoexpress"
-        -->
         <a href="https://www.facebook.com/profile.php?id=61578527914193" target="_blank" rel="noopener" class="soc-btn">
-          <svg class="soc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <svg class="soc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
           </svg>
           <span class="soc-name">Facebook</span>
           <span class="soc-handle">Sesgo Express</span>
         </a>
-
-        <!--
-          ACTUALIZAR: Reemplaza XXXXXXXXXX con tu número de WhatsApp
-          Ejemplo: href="https://wa.me/573001234567"
-        -->
-        <a href="https://wa.me/573053605645" target="_blank" rel="noopener" class="soc-btn" style="border-color:rgba(37,211,102,.22)">
-          <svg class="soc-ico" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="1.5">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-          </svg>
-          <span class="soc-name" style="color:#25D366">WhatsApp</span>
-          <span class="soc-handle">Escríbenos</span>
-        </a>
-
-        <div class="mayor-box">
-          <div class="lbl" style="margin-bottom:.6rem">Venta Exclusiva al Por Mayor</div>
-          <p>Atendemos pedidos industriales para fábricas, talleres y distribuidores. Consúltanos precios y disponibilidad por volumen a través de nuestras redes.</p>
-        </div>
-
+      </div>
+      <div class="mayor-box">
+        <strong>Venta exclusiva al por mayor.</strong> Atendemos pedidos para fábricas, talleres y distribuidores. Consúltanos precios y disponibilidad a través de WhatsApp.
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ── FOOTER ─────────────────────────────────── -->
+<!-- ── FOOTER ── -->
 <footer>
+  <div class="cinta" aria-hidden="true">
+    <span style="background:#F0EDF5"></span><span style="background:#212227"></span>
+    <span style="background:#FFD12D"></span><span style="background:#D01525"></span>
+    <span style="background:#1A3B82"></span><span style="background:#078930"></span>
+    <span style="background:#F95D32"></span><span style="background:#918E8A"></span>
+    <span style="background:#5B5B62"></span><span style="background:#3F4352"></span>
+    <span style="background:#40235D"></span><span style="background:#1E2A4B"></span>
+    <span style="background:#EC3063"></span><span style="background:#6C1E32"></span>
+    <span style="background:#CFB683"></span><span style="background:#0D8481"></span>
+    <span style="background:#F99AB6"></span><span style="background:#0379BC"></span>
+    <span style="background:#6AAEE5"></span><span style="background:#80D951"></span>
+    <span style="background:#D686C8"></span><span style="background:#463E35"></span>
+    <span style="background:#F8F6DE"></span><span style="background:#3B272C"></span>
+    <span style="background:#B8F0CA"></span><span style="background:#F9F6A9"></span>
+    <span style="background:#6E94C5"></span><span style="background:#EDA08B"></span>
+    <span style="background:#D78190"></span><span style="background:#0B3D2E"></span>
+  </div>
   <div class="foot-inner">
     <div>
       <div class="foot-logo">
-        <img src="imagenes/logo sesgo express.jpg" alt="Sesgo Express" class="foot-logo-img">
-        <div>
-          <div class="foot-logo-text">SESGO <em>EXPRESS</em></div>
-          <div class="foot-sub">Calidad &amp; Rapidez · Medellín</div>
-        </div>
+        <img src="assets/logo/imagotipo-horizontal-05-negativo-azul.svg" alt="Sesgo Express" height="30">
       </div>
     </div>
     <ul class="foot-links">
       <li><a href="#productos">Productos</a></li>
       <li><a href="#corte">Corte</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#colores">Colores</a></li>
+      <li><a href="#sectores">Sectores</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <p class="foot-copy">© 2025 Sesgo Express · Todos los derechos reservados</p>
+    <p class="foot-copy">© <span id="year"></span> Sesgo Express · Calidad y rapidez</p>
   </div>
 </footer>
 
 <!-- WhatsApp flotante -->
-<!--
-  ACTUALIZAR: Reemplaza XXXXXXXXXX con tu número de WhatsApp
--->
-<a href="https://wa.me/573053605645" target="_blank" rel="noopener" class="wa-btn" title="Chatea con Sesgo Express">
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-  </svg>
+<a href="https://wa.me/573053605645?text=Hola%20Sesgo%20Express%2C%20quiero%20cotizar%20sesgo"
+   target="_blank" rel="noopener" class="wa-float" title="Cotiza por WhatsApp" data-wa="float">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
 </a>
 
 <script>
-  /* ─── Navbar ───────────────────────── */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 70);
+    nav.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
-  /* ─── Mobile menu ───────────────────── */
   function toggleMenu() {
     const menu = document.getElementById('mobMenu');
     const ham  = document.getElementById('ham');
@@ -1303,47 +1092,15 @@
     document.body.style.overflow = open ? 'hidden' : '';
   }
 
-  /* ─── Scroll reveal ─────────────────── */
   const rvEls = document.querySelectorAll('.rv');
-  const rvObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const siblings = [...entry.target.parentElement.querySelectorAll('.rv')];
-      const idx = siblings.indexOf(entry.target);
-      const base = parseFloat(entry.target.style.transitionDelay || '0') * 1000;
-      const delay = base + idx * 80;
-      setTimeout(() => entry.target.classList.add('vis'), delay);
-      rvObs.unobserve(entry.target);
+  const rvObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('vis');
+      rvObs.unobserve(e.target);
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   rvEls.forEach(el => rvObs.observe(el));
-
-  /* ─── Parallax hero bg ───────────────── */
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    if (y < window.innerHeight) {
-      const bg = document.querySelector('.hero-bg');
-      if (bg) bg.style.transform = `translateY(${y * 0.25}px)`;
-    }
-  }, { passive: true });
-
-  /* ─── Active nav link ────────────────── */
-  const secIds = ['hero','productos','corte','nosotros','ventajas','sectores','colores','contacto'];
-  const navAs  = document.querySelectorAll('.nav-links a');
-  const secObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navAs.forEach(a => {
-          a.style.color = a.getAttribute('href') === '#' + e.target.id
-            ? 'var(--gold-l)' : '';
-        });
-      }
-    });
-  }, { threshold: 0.4 });
-  secIds.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) secObs.observe(el);
-  });
 </script>
 
 </body>
